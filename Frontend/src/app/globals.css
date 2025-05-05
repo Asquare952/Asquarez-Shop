@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.vh{
+  height: 90vh;
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.container-2 {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.header-placeholder::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: #ffff;
+  color: #000000;
+  transition: left 0.3s ease-in-out;
+  padding-top: 40px;
+  z-index: 1000;
+}
+.links {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+}
+.sidebar.active {
+  left: 0;
+}
+
+/* Overlay to close sidebar when clicking outside */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 150vh;
+    background: #E4E4E7;
+    overflow-y: auto;
+    padding: 10px;
+    z-index: 9999;
+}
+.glass {
+  backdrop-filter: blur(100px);
+  background: #000000;
+  border-radius: 15px;
+  padding: 20px;
+}
+.drop-down a{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fafafa;
+}
+.drop-down span{
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* sign up form */
+@media (max-width: 1280px) {
+  .form{
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+}
+.form-container{
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+.form-input{
+  border-bottom: 1px solid #e0e0e4;
+  padding-right: 10px;
+}
+.form-input::placeholder{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.responsive-img{
+  max-width: 950px;
+  width: 100%;
+  height: auto;
+}
+.gray-bg{
+  max-width: 270px;
+  width: 100%;
+  height: auto;
+}
+
+/* filter dropdown and hide */

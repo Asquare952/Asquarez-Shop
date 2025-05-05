@@ -1,0 +1,46 @@
+{
+  "name": "e-commerce-backend",
+  "version": "1.0.0",
+  "description": "e-commerce backend with mongoDB",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "noSql",
+    "nodejs",
+    "mongodb",
+    "expressjs",
+    "backend",
+    "ecommerce",
+    "api",
+    "rest-api",
+    "it-gadgets",
+    "ordersproducts",
+    "authentication",
+    "mongose"
+  ],
+  "author": "abdul afeez",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.10.1",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8"
+  }
+}
