@@ -19,7 +19,7 @@ app.use(cookieParser());
 // connecting backend to frontend
 app.use(
   cors({
-    origin: "https://asquare-techs.vercel.app/",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

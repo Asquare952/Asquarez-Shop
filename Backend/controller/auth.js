@@ -10,17 +10,39 @@ export const registerUser = async (req, res) => {
     if (!password) {
       return res.status(400).json({ error: "Password is required" });
     }
+
+   // Prevent user from creating account that is already existing base on email
+   const userExist = await User.findOne({ email });
+   if (userExist)
+     return response.status(400).json({ error: "User already exist" });
+
+
+   const adminEmail = "admin@asquarez.com";
+   // Prevent registration of the admin email through public form
+   if (email === adminEmail) {
+     return res.status(403).json({ error: "Access denied" });
+   }
+
     const salt = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    // Assign role base on email
+    const role = email === "admin@asquarez.com" ? "admin" : "user";
     const newUser = new User({
       name,
       email,
-      password: hashPassword,
+      password: hashedPassword,
+      role: "user"
     });
+
     const savedUser = await newUser.save();
     return res.status(201).json({
       message: "Account Successfully Created",
-      savedUser,
+      savedUser: {
+        _id: savedUser._id,
+        name: savedUser.name,
+        email: savedUser.email,
+        role: savedUser.role,
+      },
     });
   } catch (error) {
     res.status(500).json({
@@ -88,7 +110,8 @@ export const loginUser = async (req, res) => {
     });
 
     //  deletUserPassword
-    const { password } = user._doc; 
+    const { password } = user._doc;
+
     res.status(200).json({
       message: "Login successfull",
       user: {
