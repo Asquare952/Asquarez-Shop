@@ -6,6 +6,7 @@ import cors from "cors";
 import authroute from "./routes/auth.js";
 import cookieParser from "cookie-parser"
 
+
 dotenv.config()
 
 const app = express()
@@ -23,6 +24,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 const PORT = process.env.PORT || 5000;
 

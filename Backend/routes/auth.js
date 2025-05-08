@@ -23,6 +23,6 @@ router.put("/auth/:id", updateUser);
 
 router.post("/auth/forgot-password", forgotPassword);
 
-router.post("auth/reset-password/:token", resetPassword);
+router.post("/auth/reset-password/:token", resetPassword);
 
 export default router;
