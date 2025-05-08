@@ -19,7 +19,7 @@ app.use(cookieParser());
 // connecting backend to frontend
 app.use(
   cors({
-    origin: "https://asquarez-shop.vercel.app/",
+    origin: "https://asquarez-shop.vercel.app",
     credentials: true,
   })
 );
