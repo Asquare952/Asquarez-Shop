@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 // import { Formik } from "formik";
 import * as yup from "yup";
-import { registerUser } from "@/app/utils/api/auth";
+import { registerUser } from "@/app/services/api/authService";
 import Swal from "sweetalert2";
 
 // define yup validation schema
@@ -55,8 +55,9 @@ const page = () => {
         setFormError("Please fill out the form correctly before registering");
       } else {
         setFormError("");
-        router.push("/auth/login");
-        setInterval(5000);
+        setTimeout(() => {
+          router.push("/auth/login");
+        }, 5000);
       }
     } catch (err) {
       Swal.fire({

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import * as yup from "yup";
-import { loginUser } from "@/app/utils/api/auth";
+import { loginUser } from "@/app/services/api/authService";
 import { useAuth } from "@/app/context/AuthContext";
 import Swal from "sweetalert2";
 
@@ -36,7 +36,7 @@ const Page = () => {
     try {
       const res = await loginUser(data);
       const values = getValues();
-      const {user, token} = res.data;
+      const { user, token } = res.data;
       login(user, token);
       Swal.fire({
         icon: "success",
@@ -50,8 +50,9 @@ const Page = () => {
         setFormError("Please fill out the form correctly before login");
       } else {
         setFormError("");
-        router.push("/");
-        setInterval(5000);
+        setInterval(() => {
+          router.push("/");
+        }, 5000);
       }
     } catch (err) {
       Swal.fire({
