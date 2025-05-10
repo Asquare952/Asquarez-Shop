@@ -34,7 +34,7 @@ const Page = () => {
 
   const handleLoginClick = async (data) => {
     try {
-      const res = await loginUser(data);
+      await loginUser(data);
       const values = getValues();
       const { user, token } = res.data;
       login(user, token);
@@ -43,8 +43,6 @@ const Page = () => {
         title: "Login Successfull",
         timer: 1000,
       });
-
-      console.log("API responce", res.data);
 
       if (!values.email || !values.password || Object.keys(errors).length > 0) {
         setFormError("Please fill out the form correctly before login");
