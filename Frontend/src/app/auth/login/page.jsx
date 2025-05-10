@@ -48,7 +48,7 @@ const Page = () => {
         setFormError("Please fill out the form correctly before login");
       } else {
         setFormError("");
-        setInterval(() => {
+        setTimeout(() => {
           router.push("/");
         }, 5000);
       }
