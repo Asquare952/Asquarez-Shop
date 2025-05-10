@@ -163,7 +163,7 @@ export const forgotPassword = async (req, res) => {
     user.tokenExpriration = Date.now() + 1000 * 60 * 60;
     await user.save();
 
-    const resetLink = `https://asquare-techs.vercel.app//reset-password/${token}`;
+    const resetLink = `https://asquarez-shop.vercel.app/reset-password/${token}`;
 
     await sendEmail(
       user.email,
