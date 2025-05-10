@@ -3,29 +3,24 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { date } from "yup";
+import { resetPassword } from "@/app/services/api/authService";
 
-const page = ({params}) => {
-  const router = useRouter();
-  const { token } = params;
+const page = () => {
   const [password, setPassword] = useState("");
+  const router = useRouter();
+  const { token } = router.query;
 
   const handSubmit = async (e) => {
     e.preventDefault();
-
-    const res = fetch(`/api/v1/auth/reset-password/${token}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
-
-    if (res.ok) {
+    try {
+      await resetPassword(token, password);
       Swal.fire("Success", "Password has been reset", "success");
       router.replace("auth/login");
-    } else {
+    } catch (error) {
       Swal.fire("Error", data.message, "error");
     }
   };
+
   return (
     <section className="container ">
       <section className="pt-[200px] flex justify-center">

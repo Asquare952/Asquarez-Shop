@@ -2,23 +2,17 @@
 
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { forgotPassword } from "@/app/services/api/authService";
 
 const page = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = await fetch("/api/v1/auth/forgot-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    });
-
-    const data = await res.json();
-    if (res.ok) {
+    try {
+      await forgotPassword(email);
       Swal.fire("Success", data.message, "success");
-    } else {
+    } catch (error) {
       Swal.fire("Error", data.message, "error");
     }
   };
