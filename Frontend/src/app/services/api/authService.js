@@ -43,26 +43,20 @@ export const loginUser = async (data) => {
   return result;
 };
 
-export const getUser = async (data) => {
+export const getUser = async (userId) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/:id`,
+    `https://asquare-techs-backend.onrender.com/api/v1/auth/${userId}`,
     {
       method: "GET",
-      credentials: "include", // keep session cookies if used
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      credentials: "include", // optional, if you're using cookies
     }
   );
 
-  const result = await res.json();
-
   if (!res.ok) {
-    throw new Error(result.error);
+    throw new Error("Failed to fetch user");
   }
 
-  return result;
+  return await res.json();
 };
 
 export const forgotPassword = async (email) => {
@@ -78,13 +72,11 @@ export const forgotPassword = async (email) => {
     }
   );
 
-  const data = await res.json();
-
   if (!res.ok) {
     throw new Error(result.erro);
   }
 
-  return result;
+  return responce.json();
 };
 
 export const resetPassword = async (token, newPasword) => {
@@ -100,11 +92,9 @@ export const resetPassword = async (token, newPasword) => {
     }
   );
 
-  const data = await res.json();
-
   if (!res.ok) {
     throw new Error("Failed to reset password");
   }
 
-  return result;
+  return responce.json();
 };

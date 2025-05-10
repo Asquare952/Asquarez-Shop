@@ -12,6 +12,7 @@ const page = () => {
     try {
       await forgotPassword(email);
       Swal.fire("Success", data.message, "success");
+      setEmail("");
     } catch (error) {
       Swal.fire("Error", data.message, "error");
     }
